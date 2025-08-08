@@ -1,0 +1,57 @@
+Fang News Website Database Schema
+=================================
+ARTICLES DB:
+-----------
+article_id = uuid
+time_created_unix = timestamptz
+time_updated_unix = timestamptz
+author(s) = text (string with author_id)
+article_type = text (VIDEO | TEXT | GRAPHIC)
+title = text
+description = text
+thumbnail_slug = text (url)
+article_contents = text (Markdown-Stylized Text | IMAGE/Video URL)
+views = bigint
+
+CREATE TABLE articles (
+    article_id uuid,
+    time_created_unix timestamptz,
+    time_updated_unix timestamptz,
+    authors text,
+    article_type text,
+    title text,
+    description text,
+    thumbnail_slug text,
+    article_contents text,
+    views bigint
+);
+
+
+AUTHORS DB:
+-----------
+author_id = uuid
+name = text
+year = bigint
+bio = text
+email = text
+perm_level = int (can user post, comment, edit, etc)
+google_magic = text (token)
+
+CREATE TABLE authors (
+    author_id uuid,
+    name text,
+    year bigint,
+    bio text,
+    email text,
+    perm_level smallint,
+    google_magic text
+);
+
+HEADLINES DB:
+------------
+headline = text
+
+ClUB_INFO DB:
+item_id = uuid
+item_rank = smallint
+contents = text (Markdown-Stylized)

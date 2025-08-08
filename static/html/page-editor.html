@@ -1,0 +1,64 @@
+<html>
+  <link rel="stylesheet" href="style.css" />
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <h1 style="">Page Editor Extraordinaire (Ripped from MySpace.com)</h1>
+    <form class="page-editor vstack" style="gap: 1em">
+      <div>
+        <label>Article URL (Optional, To Edit Existing Article)</label>
+        <input placeholder="article current url" id="current_url" />
+      </div>
+      <div>
+        <label>Author(s)</label>
+        <input
+          placeholder="oxy email address, seperate by commas"
+          id="authors"
+        />
+      </div>
+      <div>
+        <label>Article Type</label>
+        <input placeholder="video|article|graphic)" id="article_type" />
+      </div>
+      <div>
+        <label>Title</label>
+        <input placeholder="title" id="title" />
+      </div>
+      <div>
+        <label>Description</label>
+        <input placeholder="description" id="description" />
+      </div>
+      <div>
+        <label>Link to Article Image</label>
+        <input
+          placeholder="link to thumbnail (should end in .jpg/.png/etc), optional"
+          id="image_slug"
+        />
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center">
+        <label
+          >Article Contents (YouTube Link /
+          <a href="https://www.markdownguide.org/cheat-sheet/">Markdown</a>
+          Formatted Text / Graphic Link)</label
+        >
+        <br />
+        <textarea
+          placeholder=""
+          id="article_contents"
+          style="width: 50em; height: 30vh; max-width: 90vw; font-size: 1.25em"
+        ></textarea>
+      </div>
+      <div class="hstack" style="gap: 2.5em">
+        <button style="font-size: 1.5em; padding: 0.125em 2em">
+          Delete Article
+        </button>
+        <button style="font-size: 1.5em; padding: 0.125em 2em">Submit</button>
+      </div>
+    </form>
+  </div>
+</html>
