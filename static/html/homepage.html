@@ -57,50 +57,33 @@
 
   <div class="top-banner">
     <span>VOL XXXICCCI...76,326</span>
-    <span>TUESDAY, AUGUST 7, 2025</span>
+    <span>{{ date }}</span>
     <span>3 Easy Payments of $9.99+S&amp;H</span>
   </div>
   <div style="display: flex; margin: 0 auto; width: 100%; overflow: auto">
     <div class="left-sidebar">
       <h1>Trending Stories</h1>
-      {{#each headlines}}
       <ol>
+        {{#each headlines}}
         <li>{{this}}</li>
+        {{/each}}
       </ol>
-      {{/each}}
-      <h2>1. Where Exactly Is The Middle East?</h2>
-      <h2>
-        2. Trump Cuts Entirety of Oxy's Federal Funding of 6 Mini Diet-Mountain
-        Dew Cans and 30 Dimes
-      </h2>
-      <h2>3. Is Lettuce Just Small Cabbage? No, Right?</h2>
-      <h2>4. Oswald Did Fly On Epstein's Jet, Spokesperson Confirms</h2>
-      <h2>
-        5. Magnitude 4.6 Earthquake Felt Around L.A.; Seismologists Believe It
-        To Be Caused By Yo Mamma
-      </h2>
     </div>
     <div class="article-container">
-      <div class="article">
-        <h1>OCCIDENTAL TO ALLOW COLLEGE PROFFESSORS TO SIGN NIL DEALS</h1>
-        <h2>By Quinn Patwardhan - Published 7/2/2025</h2>
-        <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <p>
-          Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit
-          enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
-          exercitation amet. Nisi anim cupidatat excepteur officia.
-          Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
-          voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
-          officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
-          commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
-          Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
-          officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
-          sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
-          consectetur et est culpa et culpa duis.
-        </p>
-      </div>
+      {{#each articles}}
+      <a href="/article/{{article_id}}">
+        <div class="article">
+          <h1>{{title}}</h1>
+          <h2>By {{authors}} - Published {{formatted_date}}</h2>
+          {{#if thumbnail_slug}}
+          <img src="{{thumbnail_slug}}" />
+          {{/if}} {{#if description}}
+          <p>{{description}}</p>
+          {{/if}}
+        </div>
+      </a>
+      {{/each}}
+
       <div class="article">
         <h1>OCCIDENTAL TO ALLOW COLLEGE PROFFESSORS TO SIGN NIL DEALS</h1>
         <h2>By Quinn Patwardhan - Published 7/2/2025</h2>
@@ -123,10 +106,11 @@
       </div>
     </div>
     <div class="right-sidebar">
-      <h1>Business Plans (Confidental)</h1>
-      <h2>Next Meeting: September 1st, 2025</h2>
-      <h2>Meeting Location: Johnson 107</h2>
-      <h2>Currently Working On: Fortnightly, Layout, etc</h2>
+      <ol>
+        {{#each business_plans}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ol>
     </div>
   </div>
 </html>

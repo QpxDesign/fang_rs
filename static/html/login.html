@@ -1,0 +1,52 @@
+<html>
+  <link rel="stylesheet" href="/static/html/style.css" />
+  <script
+    src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+    integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+    crossorigin="anonymous"
+  ></script>
+  <div class="vstack" style="width: 100%">
+    <h1 style="margin-bottom: 0">Authentication</h1>
+    <h2 style="margin-top: 0; font-weight: 300; font-size: 1.25em">
+      pls don't hack us
+    </h2>
+    <form
+      class="vstack"
+      style="margin: 0 auto; font-size: 1.25em; gap: 0.5em"
+      hx-post="/submit-auth/{{redirect}}"
+    >
+      <div>
+        <label for="email">email:</label>
+        <input
+          type="email"
+          name="email"
+          value=""
+          style="
+            font-size: 1em;
+            padding: 0.125em 0.5em;
+            width: 15em;
+            max-width: 90vw;
+          "
+          placeholder="dersh@law.harvard.edu"
+        />
+      </div>
+      <div>
+        <label for="">password:</label>
+        <input
+          type="password"
+          name="password"
+          value=""
+          style="
+            font-size: 1em;
+            padding: 0.125em 0.5em;
+            width: 15em;
+            max-width: 90vw;
+          "
+        />
+      </div>
+      <button style="font-size: 1em; padding: 0.25em 0.75em">
+        Authenticate
+      </button>
+    </form>
+  </div>
+</html>
