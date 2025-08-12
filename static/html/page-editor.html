@@ -1,5 +1,11 @@
 <html>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/static/html/style.css" />
+  <script
+    src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+    integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+    crossorigin="anonymous"
+  ></script>
+
   <div
     style="
       display: flex;
@@ -8,36 +14,47 @@
       justify-content: center;
     "
   >
-    <h1 style="">Page Editor Extraordinaire (Ripped from MySpace.com)</h1>
-    <form class="page-editor vstack" style="gap: 1em">
+    <h1 style="padding: 0.5em">
+      Page Editor Extraordinaire (Ripped from MySpace.com)
+    </h1>
+    <form
+      class="page-editor vstack"
+      style="gap: 1em"
+      hx-post="/submit-page-edit"
+    >
       <div>
         <label>Article URL (Optional, To Edit Existing Article)</label>
-        <input placeholder="article current url" id="current_url" />
+        <input placeholder="article current url" name="current_url" />
       </div>
       <div>
         <label>Author(s)</label>
         <input
           placeholder="oxy email address, seperate by commas"
-          id="authors"
+          required
+          name="authors"
         />
       </div>
       <div>
         <label>Article Type</label>
-        <input placeholder="video|article|graphic)" id="article_type" />
+        <input
+          placeholder="video|article|graphic)"
+          name="article_type"
+          required
+        />
       </div>
       <div>
         <label>Title</label>
-        <input placeholder="title" id="title" />
+        <input placeholder="title" name="title" required />
       </div>
       <div>
         <label>Description</label>
-        <input placeholder="description" id="description" />
+        <input placeholder="description" name="description" />
       </div>
       <div>
         <label>Link to Article Image</label>
         <input
           placeholder="link to thumbnail (should end in .jpg/.png/etc), optional"
-          id="image_slug"
+          name="image_slug"
         />
       </div>
       <div style="display: flex; flex-direction: column; align-items: center">
@@ -49,7 +66,8 @@
         <br />
         <textarea
           placeholder=""
-          id="article_contents"
+          name="article_contents"
+          required
           style="width: 50em; height: 30vh; max-width: 90vw; font-size: 1.25em"
         ></textarea>
       </div>

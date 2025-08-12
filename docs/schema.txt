@@ -29,7 +29,7 @@ CREATE TABLE articles (
 
 AUTHORS DB:
 -----------
-author_id = uuid
+author_id = text
 name = text
 year = bigint
 bio = text
@@ -55,3 +55,9 @@ ClUB_INFO DB:
 item_id = uuid
 item_rank = smallint
 contents = text (Markdown-Stylized)
+
+CREATE TABLE headlines (
+  item_id text,
+  item_rank smallint,
+  contents text
+);

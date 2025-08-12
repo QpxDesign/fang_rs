@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/html/style.css" />
+  </head>
+  <header>
+    <div class="slogan">
+      "All the gossip <br />
+      our censor let us print"
+    </div>
+    <div>
+      <img
+        src="/static/img/fang-logo.svg"
+        alt="Fang Logo"
+        style="object-fit: contain; height: 12em"
+      />
+      <div class="socials hstack">
+        <a
+          href="https://www.instagram.com/oxy.fang/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Instagram_simple_icon.svg"
+          />
+        </a>
+        <a
+          href="mailto:thefang@oxy.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/4/4f/High-contrast-mail-mark-unread.svg"
+          />
+        </a>
+        <a
+          href="https://en.wikipedia.org/wiki/Pigeon_racing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/88/Missile-launcher_-_Delapouite_-_game-icons.svg"
+          />
+        </a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer</strong>
+      <br />
+      FANG News provides no actual news and is licensed as a Satirical Miniature
+      Horse Racing Gambling Odds Newsletter. Any appearance of actual facts or
+      information is purely coincidental. For legal inquires contact
+      dersh@law.harvard.edu.
+    </div>
+  </header>
+
+  <div class="top-banner">
+    <span>VOL XXXICCCI...76,326</span>
+    <span>{{ date }}</span>
+    <span>3 Easy Payments of $9.99+S&amp;H</span>
+  </div>
+  <div class="article-body vstack">
+  <h1>{{article.title}}<h1>
+      <h2>By {{article.authors}} - Published {{article.formatted_date}}<h2>
+        {{#if article.thumbnail_slug}}
+          <img src={{article.thumbnail_slug}}/>
+        {{/if}}
+      <p>{{article.article_contents}}</p>
+  </div>
+</html>
