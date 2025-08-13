@@ -38,6 +38,14 @@ async fn main() {
         .route("/submit-auth/{redirect}", post(routes::auth::submit_auth))
         .route("/article/{article_id}", get(routes::article::article))
         .route("/auth/{redirect}", get(routes::auth::auth_page))
+        .route(
+            "/edit-business-plans",
+            get(routes::business_plans::business_plan_editor),
+        )
+        .route(
+            "/submit-business-plan-edit",
+            post(routes::business_plans::edit_business_plans),
+        )
         .nest_service("/static", ServeDir::new("static"))
         .with_state(pool)
         .layer(CookieLayer::strict());

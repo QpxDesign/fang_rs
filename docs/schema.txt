@@ -49,9 +49,6 @@ CREATE TABLE authors (
 
 HEADLINES DB:
 ------------
-headline = text
-
-ClUB_INFO DB:
 item_id = uuid
 item_rank = smallint
 contents = text (Markdown-Stylized)
@@ -61,3 +58,15 @@ CREATE TABLE headlines (
   item_rank smallint,
   contents text
 );
+
+BUSINESS PLANS DB:
+-----------
+item_id = uuid
+item_rank = smallint
+contents = text (Markdown-Stylized)
+
+CREATE TABLE business_plans (
+  item_id text,
+  contents text
+);
+
