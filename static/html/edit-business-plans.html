@@ -1,0 +1,23 @@
+ <html>
+<link rel="stylesheet" href="/static/html/style.css" />
+  <script
+    src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+    integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+    crossorigin="anonymous"
+  ></script>
+
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <h1 style="padding: .5em">Business Plan Editor Extraordinaire (Ripped from MySpace.com)</h1>
+    <form style="gap:.5em" class="vstack" hx-post="/submit-business-plan-edit">
+      <textarea required name="new_business_plans" id="new_business_plans" style="width: 50rem; max-width:90%; height: 20rem; font-size:1.5em" placeholder="Seperate Items by New Line">{{current_business_plans}}</textarea>
+      <br />
+      <button style="font-size: 1.5em; padding: 0.125em 2em">Submit</button>
+    </form>
+</html>

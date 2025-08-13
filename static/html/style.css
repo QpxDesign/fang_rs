@@ -140,7 +140,7 @@ header {
   text-align: center;
 }
 .left-sidebar li,
-.right-sidebar li {
+.right-sidebar h2 {
   max-width: 90%;
   padding-bottom: 0;
   padding-top: 0;
