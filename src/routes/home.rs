@@ -31,7 +31,6 @@ pub async fn home(State(pool): State<Pool<Postgres>>, cookie: CookieManager) -> 
     let mut file = File::open("./static/html/homepage.html").unwrap();
     let mut contents = String::new();
     file.read_to_string(&mut contents).expect("WOOPS");
-    println!("{}", can_user_edit(cookie.clone(), &pool).await);
     let page_values: HomePageHTMLValues = HomePageHTMLValues {
         headlines: get_headlines(State(&pool)).await,
         articles: get_articles(State(&pool)).await,
