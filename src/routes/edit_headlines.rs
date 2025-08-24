@@ -87,5 +87,7 @@ pub async fn submit_headline_edit(
             .expect("woops");
     }
 
-    return Html("<h2>Form Submitted Okay (Go <a href='/'>Home</a>)</h2>".to_string());
+    return Html(
+        "<h2>Form Submitted Okay (Go <a href='/' class='link' >Home</a>)</h2>".to_string(),
+    );
 }

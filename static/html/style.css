@@ -209,3 +209,6 @@ header {
 .icon {
   height: 1em
 }
+.link {
+  color: blue;
+}

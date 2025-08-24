@@ -38,7 +38,9 @@ pub async fn submit_page_edit(
     let article_type = input.article_type;
     let q = sqlx::query("INSERT INTO articles (article_id, time_created_unix, time_updated_unix, authors, article_type, title, description, thumbnail_slug, article_contents, views) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)").bind(id).bind(current_time as i32).bind(current_time as i64).bind(authors).bind(article_type).bind(title).bind(description).bind(image_slug).bind(article_contents).bind(0);
     q.execute(&pool).await.expect("woops");
-    return Html("<h2>Form Submitted Successfully (Go <a href='/'>Home</a>)</h2>".to_string());
+    return Html(
+        "<h2>Form Submitted Successfully (Go <a href='/' class='link' >Home</a>)</h2>".to_string(),
+    );
 }
 
 // id, current_time, current_time, authors, article_type, title, description, thumbnail_slug, article_contents, 0
