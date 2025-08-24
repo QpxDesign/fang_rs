@@ -80,5 +80,7 @@ pub async fn edit_business_plans(
     if q2.is_err() {
         return Html("<h2>Connection Error</h2>".to_string());
     }
-    return Html("<h2>Form Submitted Okay (Go <a href='/'>Home</a>)</h2>".to_string());
+    return Html(
+        "<h2>Form Submitted Okay (Go <a href='/' class='link' >Home</a>)</h2>".to_string(),
+    );
 }
