@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-#[derive(Serialize, sqlx::FromRow)]
+#[derive(Serialize, sqlx::FromRow, Clone)]
 pub struct Article {
     pub title: String,
     pub article_id: String,

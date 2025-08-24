@@ -22,39 +22,48 @@
       style="gap: 1em"
       hx-post="/submit-page-edit"
     >
-      <div>
-        <label>Article URL (Optional, To Edit Existing Article)</label>
-        <input placeholder="article current url" name="current_url" />
-      </div>
+      <input
+        type="text"
+        name="article_id"
+        value="{{article_id}}"
+        style="display: none"
+      />
       <div>
         <label>Author(s)</label>
         <input
           placeholder="oxy email address, seperate by commas"
           required
+          value="{{authors}}"
           name="authors"
         />
       </div>
       <div>
         <label>Article Type</label>
         <input
-          placeholder="video|article|graphic)"
+          placeholder="(video|article|graphic)"
           name="article_type"
+          value="{{article_type}}"
           required
         />
       </div>
       <div>
         <label>Title</label>
-        <input placeholder="title" name="title" required />
+        <input placeholder="title" name="title" required value="{{title}}" />
       </div>
       <div>
         <label>Description</label>
-        <input placeholder="description" name="description" />
+        <input
+          placeholder="description"
+          name="description"
+          value="{{description}}"
+        />
       </div>
       <div>
         <label>Link to Article Image</label>
         <input
           placeholder="link to thumbnail (should end in .jpg/.png/etc), optional"
           name="image_slug"
+          value="{{image_slug}}"
         />
       </div>
       <div style="display: flex; flex-direction: column; align-items: center">
@@ -69,12 +78,11 @@
           name="article_contents"
           required
           style="width: 50em; height: 30vh; max-width: 90vw; font-size: 1.25em"
-        ></textarea>
+        >
+{{article_contents}}</textarea
+        >
       </div>
       <div class="hstack" style="gap: 2.5em">
-        <button style="font-size: 1.5em; padding: 0.125em 2em">
-          Delete Article
-        </button>
         <button style="font-size: 1.5em; padding: 0.125em 2em">Submit</button>
       </div>
     </form>

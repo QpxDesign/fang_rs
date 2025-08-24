@@ -1,7 +1,12 @@
+use argon2::{
+    password_hash::{rand_core::OsRng, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
+    Argon2,
+};
 use axum::extract::Path;
 use axum::extract::State;
 use axum::response::Html;
 use axum::Form;
+use axum_cookie::prelude::*;
 use futures_util::TryStreamExt;
 use handlebars::Handlebars;
 use serde::Deserialize;
@@ -9,12 +14,6 @@ use serde::Serialize;
 use sqlx::Pool;
 use sqlx::Postgres;
 use sqlx::Row;
-extern crate dotenv;
-use argon2::{
-    password_hash::{rand_core::OsRng, PasswordHash, PasswordHasher, PasswordVerifier, SaltString},
-    Argon2,
-};
-use axum_cookie::prelude::*;
 use std::fs::File;
 use std::io::Read;
 use uuid::Uuid;

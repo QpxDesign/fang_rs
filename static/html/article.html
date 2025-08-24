@@ -8,11 +8,14 @@
       our censor let us print"
     </div>
     <div>
-      <img
-        src="/static/img/fang-logo.svg"
-        alt="Fang Logo"
-        style="object-fit: contain; height: 12em"
+      <a href="/">
+        <img
+          src="/static/img/fang-logo.svg"
+          alt="Fang Logo"
+          style="object-fit: contain; height: 12em"
       />
+      </a>
+
       <div class="socials hstack">
         <a
           href="https://www.instagram.com/oxy.fang/"
@@ -65,6 +68,8 @@
         {{#if article.thumbnail_slug}}
           <img src={{article.thumbnail_slug}}/>
         {{/if}}
-      <p>{{article.article_contents}}</p>
+      {{#each body}}
+        <p>{{{this}}}</p>
+      {{/each}}
   </div>
 </html>

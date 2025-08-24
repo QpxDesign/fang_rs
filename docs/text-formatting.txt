@@ -1,0 +1,10 @@
+Text Formatting Syntax (For Articles):
+=======================================
+(Adapted Fountain Syntax (https://fountain.io/syntax/))
+*italics*
+**bold**
+***bold italics***
+_underline_
+{{img_link}} (ie {{https://example.com/img.png}})
+
+If any of these special characters (_,*,{) appear in the article, put a backslash (\) immediatly before them (ie \_)
