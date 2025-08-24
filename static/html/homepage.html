@@ -9,11 +9,13 @@
     </div>
 
     <div>
-      <img
-        src="/static/img/fang-logo.svg"
-        alt="Fang Logo"
-        style="object-fit: contain; height: 12em"
-      />
+      <a href="/">
+        <img
+          src="/static/img/fang-logo.svg"
+          alt="Fang Logo"
+          style="object-fit: contain; height: 12em"
+      /></a>
+
       <div class="socials hstack">
         <a
           href="https://www.instagram.com/oxy.fang/"
@@ -52,6 +54,8 @@
       Horse Racing Gambling Odds Newsletter. Any appearance of actual facts or
       information is purely coincidental. For legal inquires contact
       dersh@law.harvard.edu.
+      <br />
+      <a href="/auth/home" style="font-size: 1em; color: blue">Member Login</a>
     </div>
   </header>
 
@@ -62,7 +66,17 @@
   </div>
   <div style="display: flex; margin: 0 auto; width: 100%; overflow: auto">
     <div class="left-sidebar">
-      <h1>Trending Stories</h1>
+      <h1>
+        Trending Stories {{#if canUserEdit}}
+        <a href="/edit-headlines">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/d/de/Noun_Project_edit_icon_1038134.svg"
+            alt=""
+            class="icon"
+            style="margin: 0"
+        /></a>
+        {{/if}}
+      </h1>
       <ol>
         {{#each headlines}}
         <li>{{this}}</li>
@@ -76,37 +90,39 @@
           <h1>{{title}}</h1>
           <h2>By {{authors}} - Published {{formatted_date}}</h2>
           {{#if thumbnail_slug}}
-          <img src="{{thumbnail_slug}}" />
-          {{/if}} {{#if description}}
           <p>{{description}}</p>
+          <img src="{{thumbnail_slug}}" />
+          {{/if}} {{#if description}} {{/if}} {{#if ../canUserEdit}}
+          <div class="hstack icon-bar">
+            <a href="/page-editor/{{article_id}}">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/d/de/Noun_Project_edit_icon_1038134.svg"
+                alt=""
+            /></a>
+            <a href="/delete/{{article_id}}">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Trash-can_-_Delapouite_-_game-icons.svg"
+                alt=""
+            /></a>
+          </div>
           {{/if}}
         </div>
       </a>
       {{/each}}
-
-      <div class="article">
-        <h1>OCCIDENTAL TO ALLOW COLLEGE PROFFESSORS TO SIGN NIL DEALS</h1>
-        <h2>By Quinn Patwardhan - Published 7/2/2025</h2>
-        <img
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-        <p>
-          Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit
-          enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
-          exercitation amet. Nisi anim cupidatat excepteur officia.
-          Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate
-          voluptate dolor minim nulla est proident. Nostrud officia pariatur ut
-          officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit
-          commodo officia dolor Lorem duis laboris cupidatat officia voluptate.
-          Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis
-          officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis
-          sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea
-          consectetur et est culpa et culpa duis.
-        </p>
-      </div>
     </div>
     <div class="right-sidebar">
-      <h1>Club Happenings</h1>
+      <h1>
+        Club Happenings {{#if canUserEdit}}
+        <a href="/edit-business-plans">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/d/de/Noun_Project_edit_icon_1038134.svg"
+            alt=""
+            class="icon"
+            style="margin: 0"
+        /></a>
+        {{/if}}
+      </h1>
+
       <div
         style="justify-contents: flex-start; text-align: left"
         class="vstack"

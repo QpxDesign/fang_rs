@@ -1,8 +1,7 @@
-use axum::{routing::get, routing::post, Router};
+use axum::{response::Redirect, routing::get, routing::post, Router};
 use axum_cookie::prelude::*;
 use sqlx::postgres::PgPoolOptions;
-use sqlx::Pool;
-use sqlx::Postgres;
+use std::env;
 use tower_http::services::ServeDir;
 #[path = "./routes/mod.rs"]
 mod routes;
@@ -15,14 +14,19 @@ mod structs;
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv();
     let pool = PgPoolOptions::new()
         .max_connections(5)
-        .connect("postgres://postgres:password@localhost/fang")
+        .connect(&env::vars().find(|v| v.0 == "DATABASE_URL").unwrap().1)
         .await
         .unwrap();
     let app = Router::new()
         .route("/", get(routes::home::home))
-        .route("/page-editor", get(routes::page_editor::page_editor))
+        .route("/page-editor", get(routes::page_editor::create_page))
+        .route(
+            "/page-editor/{article_id}",
+            get(routes::page_editor::edit_page),
+        )
         .route(
             "/submit-page-edit",
             post(routes::submit_page_edit::submit_page_edit),
@@ -38,6 +42,8 @@ async fn main() {
         .route("/submit-auth/{redirect}", post(routes::auth::submit_auth))
         .route("/article/{article_id}", get(routes::article::article))
         .route("/auth/{redirect}", get(routes::auth::auth_page))
+        .route("/home", get(|| async { Redirect::permanent("/") }))
+        .route("/auth", get(|| async { Redirect::permanent("/auth/home") }))
         .route(
             "/edit-business-plans",
             get(routes::business_plans::business_plan_editor),
@@ -46,6 +52,7 @@ async fn main() {
             "/submit-business-plan-edit",
             post(routes::business_plans::edit_business_plans),
         )
+        .route("/delete/{article_id}", get(routes::page_editor::delete))
         .nest_service("/static", ServeDir::new("static"))
         .with_state(pool)
         .layer(CookieLayer::strict());

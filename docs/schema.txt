@@ -14,9 +14,9 @@ article_contents = text (Markdown-Stylized Text | IMAGE/Video URL)
 views = bigint
 
 CREATE TABLE articles (
-    article_id uuid,
-    time_created_unix timestamptz,
-    time_updated_unix timestamptz,
+    article_id text,
+    time_created_unix bigint,
+    time_updated_unix bigint,
     authors text,
     article_type text,
     title text,
@@ -38,7 +38,7 @@ perm_level = int (can user post, comment, edit, etc)
 google_magic = text (token)
 
 CREATE TABLE authors (
-    author_id uuid,
+    author_id text,
     name text,
     year bigint,
     bio text,
@@ -69,4 +69,3 @@ CREATE TABLE business_plans (
   item_id text,
   contents text
 );
-

@@ -1,7 +1,6 @@
 * {
   font-family: georgia;
 }
-
 body{
   margin: 0;
   padding: 0;
@@ -29,7 +28,8 @@ a:hover {
     text-decoration: underline;
 }
 a:visited {
-  color: orange;
+  color: #540494;
+  font-style: italic;
 }
 header {
   display: flex;
@@ -82,11 +82,10 @@ header {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: 1.5em;
   flex: 2;
   border-right: 3px solid black;
   border-left: 3px solid black;
-  max-width: 90vw;
   margin: 0 auto;
 
 }
@@ -97,7 +96,6 @@ header {
   align-items: center;
   flex-direction: column;
   padding: 0.7rem 2em;
-  width: 100%;
 }
 .article h1 {
   padding: 0em .25em;
@@ -106,12 +104,14 @@ header {
 }
 .article h2 {
   margin-top: 0;
+  margin-bottom: 0;
   font-weight: 300;
 }
 .article p {
-  text-align: left;
+  text-align: center;
   padding: 2em;
   padding-top: 0;
+  padding-bottom: 0;
   font-size: 1.125em;
   margin-bottom: 0;
 }
@@ -119,6 +119,7 @@ header {
   max-height: 40vh;
   max-width: 90vw;
   object-fit: cover;
+  margin-top:0.85em;
 }
 .left-sidebar,
 .right-sidebar {
@@ -150,24 +151,22 @@ header {
   margin-bottom: 1em;
 }
 .article-body {
-  width: 90%;
+  width: min(90%, 80em);
   margin: 0 auto;
   justify-content: flex-start;
   gap: 0;
-
+  line-height: 1.3;
 }
 .article-body h1 {
   margin-bottom: 0;
   padding: 0;
   font-size: 2.5em;
+  text-align: center;
 }
 .article-body h2 {
   margin-top: 0;
   font-weight: 500;
-
 }
-
-
 @media (max-width: 1050px) {
   .disclaimer, .slogan {
     display: none;
@@ -192,4 +191,14 @@ header {
 }
 .page-editor label {
   font-size: 1.25em;
+}
+.article .icon-bar {
+  margin-top:0.75em;
+  gap: 0.5em;
+}
+.article .icon-bar img, .icon {
+  height: 2.5em;
+}
+.icon {
+  height: 1em
 }

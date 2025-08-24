@@ -21,7 +21,7 @@ pub async fn get_headlines(State(pool): State<&Pool<Postgres>>) -> Vec<String> {
         });
         index -= 1;
     }
-    out.sort_by_key(|k| k.rank);
+    out.sort_by_key(|k| -k.rank);
     let mut o = Vec::new();
     for i in out {
         o.push(i.contents);
