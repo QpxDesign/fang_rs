@@ -53,6 +53,7 @@ async fn main() {
             post(routes::business_plans::edit_business_plans),
         )
         .route("/delete/{article_id}", get(routes::page_editor::delete))
+        .fallback(routes::not_found::handler_404)
         .nest_service("/static", ServeDir::new("static"))
         .with_state(pool)
         .layer(CookieLayer::strict());
