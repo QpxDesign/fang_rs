@@ -181,7 +181,7 @@ header {
   .article-container {
     border: none;
   }
-  .top-banner span:nth-child(1) {
+  .top-banner span:nth-child(1), .top-banner span:nth-child(3) {
     display: none;
   }
   .top-banner {
