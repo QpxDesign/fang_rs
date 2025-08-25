@@ -1,11 +1,9 @@
 use axum::extract::State;
 use axum::response::Html;
-use futures_util::TryStreamExt;
 use handlebars::Handlebars;
 use serde::Serialize;
 use sqlx::Pool;
 use sqlx::Postgres;
-use sqlx::Row;
 use std::fs::File;
 use std::io::Read;
 extern crate chrono;
