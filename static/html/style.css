@@ -50,8 +50,34 @@ header {
   gap: 0.5em;
 }
 .top-banner {
-  width: 100%;
   display: flex;
+}
+.headline-scroller {
+  display: none;
+  position: relative;
+  height: 1.75rem;
+  border-top: 0px !important;
+}
+.headline-scroller .container {
+  grid-gap: 5em;
+  animation-name: slide;
+  animation-duration: 45s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-direction: normal;
+}
+@keyframes slide {
+  0% {
+      transform: translateX(0%);
+    }
+  100% {
+      transform: translateX(-100%);
+    }
+}
+.top-banner, .headline-scroller {
+  width: 100%;
   font-size: 1.25em;
   text-wrap: nowrap;
   gap: 3em;
@@ -61,6 +87,12 @@ header {
   justify-content: space-around;
   border-top: 2px solid black;
   border-bottom: 3px solid black;
+}
+.headline-scroller h2 {
+  font-size: 1em;
+  padding: 0;
+  margin: 0 0.25em;
+  font-weight: 300;
 }
 .slogan,
 .disclaimer {
@@ -174,6 +206,9 @@ header {
 @media (max-width: 1050px) {
   .disclaimer, .slogan {
     display: none;
+  }
+  .headline-scroller {
+    display:flex;
   }
   .right-sidebar, .left-sidebar {
     display: none;
