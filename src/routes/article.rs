@@ -12,6 +12,8 @@ use sqlx::Pool;
 use sqlx::Postgres;
 use std::fs::File;
 use std::io::Read;
+extern crate chrono;
+use chrono::prelude::*;
 
 #[derive(Serialize)]
 struct ArticleHTMLValues {
@@ -68,7 +70,7 @@ pub async fn article(
     }
 
     let val = ArticleHTMLValues {
-        date: "".to_string(),
+        date: Local::now().format("%m/%d/%Y").to_string(),
         article: article,
         body: body,
     };
