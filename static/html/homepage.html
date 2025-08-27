@@ -10,7 +10,6 @@
       "All the gossip <br />
       our censor let us print"
     </div>
-
     <div>
       <a href="/">
         <img
@@ -69,6 +68,7 @@
     </label>
     <input type="checkbox" id="menu-toggle" value="false" />
     <div class="menu-items-container vstack">
+      <a href="/members"><h2>Members</h2></a>
       <a href="/business-plans"> <h2>Business Plans</h2></a>
       <a href="/auth/home"> <h2>Member Login</h2></a>
     </div>
@@ -115,7 +115,7 @@
       <a href="/article/{{article_id}}">
         <div class="article">
           <h1>{{title}}</h1>
-          <h2>By {{authors}} - Published {{formatted_date}}</h2>
+          <h2>By {{{formatted_authors}}} - Published {{formatted_date}}</h2>
           {{#if thumbnail_slug}}
           <p>{{description}}</p>
           <img src="{{thumbnail_slug}}" />
@@ -151,7 +151,7 @@
       </h1>
 
       <div
-        style="justify-contents: flex-start; text-align: left"
+        style="justify-contents: flex-start; text-align: center; width: 100%"
         class="vstack"
       >
         {{#each business_plans}}

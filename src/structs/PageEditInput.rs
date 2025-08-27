@@ -4,6 +4,7 @@ use serde::Serialize;
 #[derive(Debug, Deserialize, Serialize)]
 pub struct PageEditInput {
     pub article_id: String,
+    pub date: String,
     pub authors: String,
     pub article_type: String,
     pub title: String,

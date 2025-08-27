@@ -7,6 +7,7 @@ pub struct Article {
     pub time_created_unix: i64,
     pub time_updated_unix: i64,
     pub authors: String,
+    pub formatted_authors: String,
     pub article_type: String, // TODO: make enum
     pub description: String,
     pub thumbnail_slug: String,

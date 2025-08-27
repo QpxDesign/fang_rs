@@ -5,6 +5,7 @@ use axum::extract::Path;
 use axum::extract::State;
 use axum::response::Html;
 use axum_cookie::prelude::*;
+use chrono::prelude::*;
 use handlebars::Handlebars;
 use sqlx::Pool;
 use sqlx::Postgres;
@@ -23,6 +24,7 @@ pub async fn create_page(
         let mut contents = String::new();
         let val = PageEditInput {
             article_id: Uuid::new_v4().to_string(),
+            date: "".to_string(),
             authors: "".to_string(),
             article_type: "".to_string(),
             title: "".to_string(),
@@ -71,6 +73,10 @@ pub async fn edit_page(
     let val = PageEditInput {
         article_id: article.article_id,
         authors: article.authors,
+        date: DateTime::from_timestamp(article.time_created_unix, 0)
+            .unwrap()
+            .format("%m/%d/%Y")
+            .to_string(),
         article_type: article.article_type,
         title: article.title,
         description: Some(article.description),

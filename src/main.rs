@@ -14,7 +14,6 @@ mod structs;
 
 #[tokio::main]
 async fn main() {
-    let bp = "./static/html/business_plans.html".to_string();
     dotenvy::dotenv();
     let pool = PgPoolOptions::new()
         .max_connections(5)
@@ -46,6 +45,11 @@ async fn main() {
         .route("/home", get(|| async { Redirect::permanent("/") }))
         .route("/auth", get(|| async { Redirect::permanent("/auth/home") }))
         .route(
+            "/author/{author_name}",
+            get(routes::members::member_article_page),
+        )
+        .route("/members", get(routes::members::members))
+        .route(
             "/edit-business-plans",
             get(routes::business_plans::business_plan_editor),
         )
@@ -57,6 +61,14 @@ async fn main() {
         .route(
             "/business-plans",
             get(routes::business_plans::business_plans_page),
+        )
+        .route(
+            "/edit-profile",
+            get(routes::edit_profile::profile_editor_page),
+        )
+        .route(
+            "/submit-profile-edit",
+            post(routes::edit_profile::submit_profile_edit),
         )
         .fallback(routes::not_found::handler_404)
         .nest_service("/static", ServeDir::new("static"))
