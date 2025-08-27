@@ -67,7 +67,9 @@ pub async fn edit_business_plans(
     }
     let id = Uuid::new_v4();
 
-    let q1 = sqlx::query("DELETE FROM headlines").execute(&pool).await;
+    let q1 = sqlx::query("DELETE FROM business_plans")
+        .execute(&pool)
+        .await;
     if q1.is_err() {
         return Html("<h2>Connection Error</h2>".to_string());
     }

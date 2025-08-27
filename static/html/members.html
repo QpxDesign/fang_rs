@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/static/html/style.css" />
   </head>
-  <header>
+  <header style="padding-bottom: 0.5em; border-bottom: 2px solid black">
     <div class="slogan">
       "All the gossip <br />
       our censor let us print"
@@ -16,8 +16,7 @@
           src="/static/img/fang-logo.svg"
           alt="Fang Logo"
           style="object-fit: contain; height: 12em"
-      />
-      </a>
+      /></a>
 
       <div class="socials hstack">
         <a
@@ -57,6 +56,8 @@
       Horse Racing Gambling Odds Newsletter. Any appearance of actual facts or
       information is purely coincidental. For legal inquires contact
       dersh@law.harvard.edu.
+      <br />
+      <a href="/auth/home" style="font-size: 1em; color: blue">Member Login</a>
     </div>
     <label for="menu-toggle">
       <img
@@ -73,19 +74,32 @@
     </div>
   </header>
 
-  <div class="top-banner">
-    <span>VOL XXXICCCI...76,326</span>
-    <span>{{ date }}</span>
-    <span>3 Easy Payments of $9.99+S&amp;H</span>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <h1 style="padding: 0.5em; text-align: center">Our Co-Conspirators</h1>
   </div>
-  <div class="article-body vstack">
-  <h1>{{article.title}}<h1>
-      <h2>By {{{article.formatted_authors}}} - Published {{article.formatted_date}}<h2>
-        {{#if article.thumbnail_slug}}
-          <img src={{article.thumbnail_slug}}/>
-        {{/if}}
-      {{#each body}}
-        <p>{{{this}}}</p>
-      {{/each}}
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 90%;
+      margin: 0 auto;
+      gap: 2em;
+    "
+  >
+    {{#each authors}}
+    <div class="member-box vstack">
+      <img src="./static/headshots/{{formatted_name}}.jpg" alt="" />
+      <h2>{{name}}</h2>
+      <h3>{{club_position}}</h3>
+    </div>
+    {{/each}}
   </div>
 </html>

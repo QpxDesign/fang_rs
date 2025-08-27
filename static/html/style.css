@@ -204,6 +204,11 @@ header {
   margin-top: 0;
   font-weight: 500;
 }
+@media (min-width: 1051px) {
+  input[type=checkbox]:checked ~ div {
+   visibility: hidden !important;
+}
+}
 @media (max-width: 1050px) {
   .disclaimer, .slogan {
     display: none;
@@ -287,14 +292,51 @@ header {
 .menu-items-container h2 {
   margin: 0;
 }
-
 .menu-items-container {
    display: none;
 }
-
 input[type=checkbox]:checked ~ div {
    display: flex !important;
 }
 header label {
     display: none;
+}
+.member-box h2, h3 {
+  margin: 0;
+  margin-top: 0.5em;
+}
+.member-box img{
+  width: 15em;
+  max-width: 90vw;
+}
+.member-box h3 {
+  margin-top: 0.25em;
+  font-weight: 300;
+}
+.profile-display-container {
+  text-align: center;
+  width: 20em;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+.profile-display-container  h1 {
+  margin: 0;
+  margin-top: 0.5em;
+}
+.profile-display-container h2 {
+  margin: 0;
+  font-weight: 300;
+}
+.profile-display-container p {
+  width: 100%;
+  margin: 0;
+  font-size: 1.25em;
+  margin-top: .5em;
+}
+.profile-display-container img {
+  margin-top: 0.5em;
+  width: 20em;
+  height: 20em;
+  object-fit: cover;
+  max-width: 90vw;
 }

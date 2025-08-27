@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/html/style.css" />
+  </head>
+  <script
+    src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+    integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+    crossorigin="anonymous"
+  ></script>
+
+  <h1 style="padding: 0.5em">
+    Profile Plan Editor Extraordinaire (Ripped from MySpace.com)
+  </h1>
+  <form
+    style="gap: 0.5em; margin: 0 auto"
+    class="page-editor vstack"
+    hx-post="/submit-profile-edit"
+  >
+    <div>
+      <label>Email</label>
+      <input placeholder="email" required value="{{email}}" name="email" />
+    </div>
+    <div>
+      <label>Name</label>
+      <input
+        placeholder="ex: John Mulaney"
+        required
+        value="{{name}}"
+        name="name"
+      />
+    </div>
+    <div>
+      <label>Position</label>
+      <input
+        placeholder="ex: Junior VP of Y2K Compliance, Ballon Animals, & Crainometry"
+        required
+        value="{{position}}"
+        name="position"
+      />
+    </div>
+    <div>
+      <label>Year</label>
+      <input placeholder="2028" required value="{{name}}" name="year" />
+    </div>
+    <textarea
+      required
+      name="bio"
+      id="bio"
+      style="width: 50em; height: 30vh; max-width: 90vw; font-size: 1.25em"
+      placeholder="bio"
+    >
+{{bio}}</textarea
+    >
+    <br />
+    <button style="font-size: 1.5em; padding: 0.125em 2em">Submit</button>
+  </form>
+</html>

@@ -1,4 +1,5 @@
 use crate::structs::article::Article;
+use crate::utils::authors_to_string;
 use axum::extract::State;
 use chrono::prelude::*;
 use futures_util::TryStreamExt;
@@ -23,6 +24,9 @@ pub async fn get_articles(State(pool): State<&Pool<Postgres>>) -> Vec<Article> {
             views: row.try_get("thumbnail_slug").unwrap_or(0),
             article_contents: row.try_get("article_contents").unwrap_or("".to_string()),
             formatted_date: "".to_string(),
+            formatted_authors: authors_to_string::fancy_html(
+                row.try_get("authors").unwrap_or("".to_string()),
+            ),
         };
         if (o.time_created_unix > 0) {
             let n = NaiveDateTime::from_timestamp(o.time_created_unix, 0);
