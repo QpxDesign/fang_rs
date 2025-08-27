@@ -2,6 +2,7 @@ use crate::routes::auth::can_user_edit;
 use crate::CookieManager;
 use axum::extract::State;
 use axum::{extract::Form, response::Html, routing::get, Router};
+use chrono::prelude::*;
 use futures_util::TryStreamExt;
 use handlebars::Handlebars;
 use serde::Deserialize;
@@ -14,7 +15,7 @@ use std::io::Read;
 use uuid::Uuid;
 
 #[derive(Serialize)]
-struct BusinessPlansPageValues {
+struct EditBusinessPlansPageValues {
     current_business_plans: String,
 }
 
@@ -31,7 +32,7 @@ pub async fn business_plan_editor(
     let mut reg = Handlebars::new();
     let mut file = File::open("./static/html/edit-business-plans.html").unwrap();
     let mut contents = String::new();
-    let mut page_values: BusinessPlansPageValues = BusinessPlansPageValues {
+    let mut page_values: EditBusinessPlansPageValues = EditBusinessPlansPageValues {
         current_business_plans: get_business_plans(&pool).await,
     };
     file.read_to_string(&mut contents).expect("WOOPS");
@@ -83,4 +84,30 @@ pub async fn edit_business_plans(
     return Html(
         "<h2>Form Submitted Okay (Go <a href='/' class='link' >Home</a>)</h2>".to_string(),
     );
+}
+
+#[derive(Serialize)]
+struct BusinessPlansPageValues {
+    bp: Vec<String>,
+    date: String,
+}
+
+pub async fn business_plans_page(State(pool): State<Pool<Postgres>>) -> Html<String> {
+    let mut reg = Handlebars::new();
+    let page_values = BusinessPlansPageValues {
+        date: Local::now().format("%m/%d/%Y").to_string(),
+        bp: get_business_plans(&pool)
+            .await
+            .split("\n")
+            .map(|v| v.to_string())
+            .collect::<Vec<String>>(),
+    };
+    let mut page_file = File::open("./static/html/business-plans.html").unwrap();
+    let mut contents = String::new();
+    page_file.read_to_string(&mut contents).expect("WOOPS");
+    let o = reg
+        .render_template(&contents, &serde_json::to_value(page_values).expect("woop"))
+        .expect("woops");
+
+    return Html(o);
 }
