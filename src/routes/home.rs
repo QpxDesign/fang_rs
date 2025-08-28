@@ -10,7 +10,9 @@ extern crate chrono;
 use crate::routes::auth::can_user_edit;
 use crate::routes::business_plans::get_business_plans;
 use crate::structs::article::Article;
+use crate::structs::Author::Author;
 use crate::utils::get_articles::get_articles;
+use crate::utils::get_authors::get_authors;
 use crate::utils::get_headlines::get_headlines;
 use axum_cookie::CookieManager;
 use chrono::prelude::*;
@@ -21,6 +23,7 @@ pub struct HomePageHTMLValues {
     business_plans: Vec<String>,
     date: String,
     articles: Vec<Article>,
+    authors: Vec<Author>,
     canUserEdit: bool,
 }
 
@@ -30,6 +33,7 @@ pub async fn home(State(pool): State<Pool<Postgres>>, cookie: CookieManager) -> 
     let mut contents = String::new();
     file.read_to_string(&mut contents).expect("WOOPS");
     let page_values: HomePageHTMLValues = HomePageHTMLValues {
+        authors: get_authors(State(&pool)).await,
         headlines: get_headlines(State(&pool)).await,
         articles: get_articles(State(&pool)).await,
         date: Local::now().format("%m/%d/%Y").to_string(),

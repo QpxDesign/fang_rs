@@ -40,7 +40,8 @@ pub async fn profile_editor_page(
             .cloned();
     if a.is_none() {
         return Html(
-            format!("<meta http-equiv=\"refresh\" content=\"0; url=/auth \" />").to_string(),
+            format!("<meta http-equiv=\"refresh\" content=\"0; url=/auth/edit-profile \" />")
+                .to_string(),
         );
     }
     let a = a.unwrap().clone();
