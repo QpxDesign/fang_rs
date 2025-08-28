@@ -331,3 +331,8 @@ header label {
   object-fit: cover;
   max-width: 90vw;
 }
+.article-body img {
+  width: 30em;
+  max-width: 90vw;
+  object-fit: cover;
+}
