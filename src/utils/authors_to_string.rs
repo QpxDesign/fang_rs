@@ -16,7 +16,7 @@ pub fn fancy_html(authors: String) -> String {
         let link = format!("/author/{fa}");
 
         if index > 0 {
-            o.push_str(format!("<a href={link}>+ {a}</a>").as_str());
+            o.push_str(format!("<a href={link}> + {a}</a>").as_str());
         } else {
             o.push_str(format!("<a href={link}>{a}</a>").as_str());
         }

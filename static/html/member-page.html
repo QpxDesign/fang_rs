@@ -81,7 +81,7 @@
   </div>
   <div class="profile-display-container vstack">
     <img src="/static/headshots/{{author.formatted_name}}.jpg" />
-    <h1>{{author.name}} {{author.formatted_year}}</h1>
+    <h1></a>{{author.name}} {{author.formatted_year}}</h1>
     <h2>{{author.club_position}}</h2>
     <p>{{author.bio}}</p>
   </div>
@@ -100,13 +100,13 @@
   </h3>
   <div
     class="article-container"
-    style="padding-bottom: 4em; font-size: 0.85rem"
+    style="padding-bottom: 4em; font-size: 0.85rem; border: none; width: min(75em, 90vw)"
   >
     {{#each articles}}
     <a href="/article/{{article_id}}">
-      <div class="article">
+      <div class="article" >
         <h1>{{title}}</h1>
-        <h2>By {{authors}} - Published {{formatted_date}}</h2>
+        <h2>By {{{formatted_authors}}} - Published {{formatted_date}}</h2>
         {{#if thumbnail_slug}}
         <p>{{description}}</p>
         <img src="{{thumbnail_slug}}" />

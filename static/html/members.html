@@ -95,11 +95,13 @@
     "
   >
     {{#each authors}}
-    <div class="member-box vstack">
-      <img src="./static/headshots/{{formatted_name}}.jpg" alt="" />
-      <h2>{{name}}</h2>
-      <h3>{{club_position}}</h3>
-    </div>
+    <a href="/author/{{formatted_name}}">
+      <div class="member-box vstack" style="padding-bottom: 2em">
+        <img src="./static/headshots/{{formatted_name}}.jpg" alt="" />
+        <h2>{{name}}</h2>
+        <h3>{{club_position}}</h3>
+      </div>
+    </a>
     {{/each}}
   </div>
 </html>

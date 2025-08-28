@@ -158,6 +158,18 @@
         <h2>{{this}}</h2>
         {{/each}}
       </div>
+      <h1>Our Co-Conspirators</h1>
+      <div class="vstack">
+        {{#each authors}}
+        <a href="/author/{{formatted_name}}">
+          <div class="member-box vstack" style="padding-bottom: 2em">
+            <img src="./static/headshots/{{formatted_name}}.jpg" alt="" />
+            <h2>{{name}} {{formatted_year}}</h2>
+            <h3>{{club_position}}</h3>
+          </div>
+        </a>
+        {{/each}}
+      </div>
     </div>
   </div>
 </html>

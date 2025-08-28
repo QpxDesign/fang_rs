@@ -1,3 +1,4 @@
 # POSTGRES SQL:
 sudo -i -u postgres
-UPDATE authors SET perm_level = 5 WHERE email = 'qpatwardhan@oxy.edu';
+UPDATE authors SET perm_level = 5 WHERE email = 'email';
+UPDATE authors SET rank = 1001 WHERE email = 'qpatwardhan@oxy.edu';
