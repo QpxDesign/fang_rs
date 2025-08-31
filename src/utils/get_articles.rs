@@ -27,10 +27,12 @@ pub async fn get_articles(State(pool): State<&Pool<Postgres>>) -> Vec<Article> {
             views: row.try_get("thumbnail_slug").unwrap_or(0),
             article_contents: row.try_get("article_contents").unwrap_or("".to_string()),
             formatted_date: "".to_string(),
+            formatted_title: "".to_string(),
             formatted_authors: authors_to_string::fancy_html(
                 row.try_get("authors").unwrap_or("".to_string()),
             ),
         };
+        o.formatted_title = format_url_text(o.title.clone());
         if (o.time_created_unix > 0) {
             let n = NaiveDateTime::from_timestamp(o.time_created_unix, 0);
             let d: DateTime<Utc> = DateTime::from_utc(n, Utc);
@@ -44,5 +46,17 @@ pub async fn get_articles(State(pool): State<&Pool<Postgres>>) -> Vec<Article> {
     out.shuffle(&mut thread_rng());
     //  zines.append(&mut out);
 
+    return out;
+}
+
+fn format_url_text(t: String) -> String {
+    let mut out: String = "".to_string();
+    for c in t.chars() {
+        if c == ' ' {
+            out.push_str("-");
+        } else if c.is_alphabetic() || c.is_numeric() {
+            out.push_str(&c.to_string());
+        }
+    }
     return out;
 }

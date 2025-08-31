@@ -80,3 +80,19 @@ pub async fn article(
 
     return Html(o);
 }
+
+pub async fn article_from_title(
+    Path(title): Path<String>,
+    State(pool): State<Pool<Postgres>>,
+) -> Html<String> {
+    let p = get_articles(State(&pool)).await;
+    let a = p.iter().find(|x| x.formatted_title == title);
+
+    if a.is_none() {
+        return Html(
+            format!("<meta http-equiv=\"refresh\" content=\"0; url=/404 \" />").to_string(),
+        );
+    } else {
+        return article(Path(a.unwrap().article_id.clone()), State(pool)).await;
+    }
+}

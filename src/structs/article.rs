@@ -3,6 +3,7 @@ use serde::Serialize;
 #[derive(Serialize, sqlx::FromRow, Clone)]
 pub struct Article {
     pub title: String,
+    pub formatted_title: String,
     pub article_id: String,
     pub time_created_unix: i64,
     pub time_updated_unix: i64,

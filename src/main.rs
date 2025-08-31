@@ -39,6 +39,10 @@ async fn main() {
             "/submit-headline-edit",
             post(routes::edit_headlines::submit_headline_edit),
         )
+        .route(
+            "/article/t/{title}",
+            get(routes::article::article_from_title),
+        )
         .route("/submit-auth/{redirect}", post(routes::auth::submit_auth))
         .route("/article/{article_id}", get(routes::article::article))
         .route("/auth/{redirect}", get(routes::auth::auth_page))
