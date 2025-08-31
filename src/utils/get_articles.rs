@@ -3,6 +3,9 @@ use crate::utils::authors_to_string;
 use axum::extract::State;
 use chrono::prelude::*;
 use futures_util::TryStreamExt;
+use rand::seq::SliceRandom;
+use rand::thread_rng;
+use shuffle::shuffler::Shuffler;
 use sqlx::Pool;
 use sqlx::Postgres;
 use sqlx::Row;
@@ -10,7 +13,7 @@ use sqlx::Row;
 pub async fn get_articles(State(pool): State<&Pool<Postgres>>) -> Vec<Article> {
     let mut rows = sqlx::query("SELECT * FROM articles").fetch(pool);
     let mut out: Vec<Article> = Vec::new();
-
+    let mut zines: Vec<Article> = Vec::new();
     while let Some(row) = rows.try_next().await.expect("Woops") {
         let mut o = Article {
             article_id: row.try_get("article_id").unwrap_or("".to_string()),
@@ -33,8 +36,13 @@ pub async fn get_articles(State(pool): State<&Pool<Postgres>>) -> Vec<Article> {
             let d: DateTime<Utc> = DateTime::from_utc(n, Utc);
             o.formatted_date = d.format("%m/%d/%Y").to_string();
         }
+
         out.push(o);
     }
-    out.sort_by_key(|k| -k.time_created_unix);
+    //    zines.sort_by_key(|k| -k.time_created_unix);
+    // out.sort_by_key(|k| -k.time_created_unix);
+    out.shuffle(&mut thread_rng());
+    //  zines.append(&mut out);
+
     return out;
 }

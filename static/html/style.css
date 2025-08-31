@@ -4,6 +4,7 @@
 body{
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 .vstack {
   display: flex;
@@ -335,4 +336,10 @@ header label {
   width: 30em;
   max-width: 90vw;
   object-fit: cover;
+}
+p:has(> object) {
+  background:red;
+  width: 50em;
+  max-width: 90vw;
+
 }
