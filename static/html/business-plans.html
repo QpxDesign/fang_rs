@@ -18,6 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/static/html/style.css" />
     <title>FANG: Occidental's 79-Year-Old Humor Magazine</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+      integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+      crossorigin="anonymous"
+    ></script>
     <meta
       name="description"
       content="FANG is Occidental College's nearly 80-year-old humor magazine that's still going strong. It currently publishes more than one issue a year, including themed zines and bi-annual fortnightlys. It's where Monty Python's Terry Gillman got his start, and that's it. It has a accolade-to-year ratio of 1/80."
@@ -101,5 +106,24 @@
     {{#each bp}}
     <h2 style="font-weight: 300">{{this}}</h2>
     {{/each}}
+    <form hx-post="/ifair-email-submit">
+      <input
+        type="email"
+        name="email"
+        value=""
+        style="font-size: 1.5em; border: 2px solid black; padding: 0.25em 1em"
+      />
+      <button
+        type=""
+        style="
+          font-size: 1.5em;
+          border: 2px solid black;
+          padding: 0.25em 1em;
+          margin: 0.25em;
+        "
+      >
+        Sign Up
+      </button>
+    </form>
   </div>
 </html>

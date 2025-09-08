@@ -119,3 +119,25 @@ pub async fn can_user_edit(cookie: CookieManager, pool: &Pool<Postgres>) -> bool
 
     return false;
 }
+
+#[derive(Debug, Deserialize)]
+pub struct IFairFormItems {
+    email: String,
+}
+
+pub async fn ifair_login(
+    State(pool): State<Pool<Postgres>>,
+    Form(input): Form<IFairFormItems>,
+) -> Html<String> {
+    let mut q = sqlx::query(
+            "INSERT INTO authors (author_id, name, year, bio, email, perm_level, google_magic) VALUES ($1, $2, $3, $4, $5, $6, $7)"
+        ).bind(Uuid::new_v4().to_string()).bind("").bind(0).bind("ifair signup").bind(input.email).bind(0).bind("bsuidu");
+    let p = q.execute(&pool).await;
+    if p.is_err() {
+        println!("{}", p.err().unwrap());
+        return Html("Error Adding Email".to_string());
+    }
+    p.unwrap();
+
+    return Html("Email Added Sucessfully".to_string());
+}
