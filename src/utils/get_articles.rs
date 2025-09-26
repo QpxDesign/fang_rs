@@ -41,10 +41,8 @@ pub async fn get_articles(State(pool): State<&Pool<Postgres>>) -> Vec<Article> {
 
         out.push(o);
     }
-    //    zines.sort_by_key(|k| -k.time_created_unix);
-    // out.sort_by_key(|k| -k.time_created_unix);
-    out.shuffle(&mut thread_rng());
-    //  zines.append(&mut out);
+    out.sort_by_key(|k| -k.time_created_unix); // SORT BY DATE (NEWEST FIRST)
+                                               //out.shuffle(&mut thread_rng()); // SORT RANDOMLY
 
     return out;
 }
