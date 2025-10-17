@@ -200,6 +200,11 @@ header {
   margin-top: 0;
   font-weight: 500;
 }
+.article-body p {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0.25em;
+}
 @media (min-width: 1051px) {
   input[type=checkbox]:checked ~ div {
    visibility: hidden !important;
@@ -333,7 +338,8 @@ header label {
   max-width: 90vw;
 }
 .article-body img {
-  width: 30em;
+  width: 10em;
+  min-width: 300px;
   max-width: 90vw;
   object-fit: cover;
 }
