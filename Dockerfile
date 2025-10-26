@@ -1,13 +1,11 @@
-FROM rust:1.89.0
-
-#ENV ROCKET_ADDRESS=0.0.0.0
-#ENV ROCKET_PORT=1971
-
-EXPOSE 1946
-
+# BUILD
+FROM rust:1.89.0 as builder
 WORKDIR /app
-COPY . .
+ADD . /app
+RUN cargo build --release
 
-RUN cargo build
-
-CMD ["cargo", "run"]
+# PROD
+EXPOSE 1947
+FROM gcr.io/distroless/cc
+COPY --from=builder /app/target/release/fang_rs /
+CMD ["./fang_rs"]
