@@ -8,5 +8,6 @@ RUN cargo build --release
 EXPOSE 1946
 FROM gcr.io/distroless/cc
 COPY --from=builder /app/static /
+COPY --from=builder /app/.env /
 COPY --from=builder /app/target/release/fang_rs /
 CMD ["./fang_rs"]
