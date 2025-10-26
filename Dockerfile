@@ -5,7 +5,7 @@ ADD . /app
 RUN cargo build --release
 
 # PROD
-EXPOSE 1947
+EXPOSE 1946
 FROM gcr.io/distroless/cc
 COPY --from=builder /app/target/release/fang_rs /
 CMD ["./fang_rs"]
