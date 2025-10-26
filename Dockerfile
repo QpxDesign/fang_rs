@@ -1,5 +1,5 @@
 # BUILD
-FROM rust:1.89.0 as builder
+FROM rust:1.89.0 AS builder
 WORKDIR /app
 ADD . /app
 RUN cargo build --release
